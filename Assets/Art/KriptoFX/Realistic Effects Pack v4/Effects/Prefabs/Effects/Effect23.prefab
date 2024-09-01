@@ -9620,7 +9620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ParticlesBudget: 1
-  UseLightShadows: 0
+  UseLightShadows: 1
   UseFastFlatDecalsForMobiles: 1
   UseCustomColor: 0
   EffectColor: {r: 1, g: 0, b: 0, a: 1}
@@ -9630,8 +9630,8 @@ MonoBehaviour:
   LimitMaxDistance: 0
   MaxDistnace: -1
   Mass: 0.5
-  Speed: 80.2
-  AirDrag: 3.35
+  Speed: 40
+  AirDrag: 1
   UseGravity: 1
 --- !u!1 &123356
 GameObject:

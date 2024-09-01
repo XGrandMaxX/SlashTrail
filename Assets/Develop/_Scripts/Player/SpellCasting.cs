@@ -34,7 +34,7 @@ public class SpellCasting : MonoBehaviour
                     {
                         Debug.Log("ASSY");
                         var direction = player.transform.position - info.HitPoint;
-                        player.Throw(new Vector3(direction.x,direction.y*2 ,direction.z), 1);
+                        player.Throw(new Vector3(direction.x,direction.y ,direction.z), 1);
                     }
                 }
             };

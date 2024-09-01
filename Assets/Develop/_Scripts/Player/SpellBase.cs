@@ -61,8 +61,10 @@ public class SpellBase : ScriptableObject
             Debug.Log("ENTERED");
             onSpellHandlingEnded?.Invoke(a);
             isHandling = false;
+            Destroy(spell.gameObject,spell.FadeoutTime);
         };
         spell.transform.rotation = Quaternion.LookRotation(this.direction);
+        Destroy(spell.gameObject,10); //УБРАТЬ ЕСЛИ БУДЕТ НЕ НУЖЕН
     }
 
     public event Action<Vector3,Vector3> onSpellReleased;
