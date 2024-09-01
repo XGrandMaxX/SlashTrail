@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be2e9ab18e304f4ea4b4438396f0af5, type: 3}
+  m_Name: Spells_FireBall
+  m_EditorClassIdentifier: 
+  handEffect: {fileID: 1546378701820074, guid: 2b93d4e4c4cc7394a8922e7e1e9ff2d2, type: 3}
+  collisionEffect: {fileID: 0}
+  spellProjectile: {fileID: 114898057786261324, guid: 4bc451a9c5656db4794e16cdecbabbac,
+    type: 3}
+  isHandling: 0
