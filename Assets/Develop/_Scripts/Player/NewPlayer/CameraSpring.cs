@@ -9,6 +9,9 @@ public class CameraSpring : MonoBehaviour
     [Space] [SerializeField] private float frequency = 18f;
     [Space] [SerializeField] private float angularisplacement = 2f;
     [SerializeField] private float linearDisplacement = 0.05f;
+
+    [SerializeField] private Transform hand;
+    [SerializeField] private Vector3 offset;
     
     private Vector3 _springPosition;
     private Vector3 _springVelocity;
@@ -27,6 +30,9 @@ public class CameraSpring : MonoBehaviour
         var springHeight = Vector3.Dot(localSpringPosition, up);
         transform.localEulerAngles = new Vector3(-springHeight * angularisplacement,0f,0f);
         transform.localPosition = localSpringPosition * linearDisplacement;
+        
+        hand.transform.localEulerAngles = new Vector3(-springHeight * angularisplacement,0f,0f);
+        hand.transform.localPosition = (localSpringPosition + offset) * linearDisplacement;
     }
 
     private static void Spring(ref Vector3 current, ref Vector3 velocity, Vector3 target,float halfLife, float frequency, float timeStep)
