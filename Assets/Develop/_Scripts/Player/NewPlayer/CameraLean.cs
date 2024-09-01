@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraLean : MonoBehaviour
 {
-    
+    [SerializeField] private Transform hand;
 
     [SerializeField] private float attackDamping = 0.5f;
     [SerializeField] private float decayDamping = 0.3f;
@@ -32,5 +32,6 @@ public class CameraLean : MonoBehaviour
         transform.localRotation = Quaternion.identity;
 
         transform.rotation = Quaternion.AngleAxis(_dampedAcceleration.magnitude * strength, leanAxis) * transform.rotation;
+        hand.transform.rotation = Quaternion.AngleAxis(_dampedAcceleration.magnitude * strength*7, leanAxis) * transform.rotation;
     }
 }

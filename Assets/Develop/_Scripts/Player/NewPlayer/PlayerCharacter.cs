@@ -289,7 +289,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             var grounded = _motor.GroundingStatus.IsStableOnGround;
             var canCayoteJump = _timeSinceUngrounded < coyoteTime && !_ungroundedDueToJump;
             
-            if(grounded){
+            if(grounded || canCayoteJump){
                 _requestedJump = false;
                 _requestedCrouch = false;
                 _requestedCrouchInAir = false;
@@ -305,9 +305,9 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             else
             {
                 _timeSinceJumpRequest += deltaTime;
-                //var canJumpLater = _timeSinceJumpRequest < coyoteTime;
+                var canJumpLater = _timeSinceJumpRequest < coyoteTime;
                 
-                _requestedJump = false;
+                _requestedJump = canJumpLater;
             }
             
         }

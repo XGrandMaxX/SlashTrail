@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/PolygonDungeonRealms/Scenes/Demo_Hell_01.unity
+    guid: eeccb7edee244244c9cbbb2d9e460728
+  - enabled: 1
+    path: Assets/Scenes/DebugScene.unity
+    guid: b1bc3e51aed7ab74a83b5a6278eea9b0
+  - enabled: 1
     path: Assets/Scenes/Bootstrap.unity
     guid: 8f148e7e6cc005b47bebd07382904bee
   - enabled: 1
