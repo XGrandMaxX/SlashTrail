@@ -14333,7 +14333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97fa9d480f3b21744a9ed30ffa97c4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParticlesBudget: 1
+  ParticlesBudget: 0.499
   UseLightShadows: 1
   UseFastFlatDecalsForMobiles: 1
   UseCustomColor: 0
