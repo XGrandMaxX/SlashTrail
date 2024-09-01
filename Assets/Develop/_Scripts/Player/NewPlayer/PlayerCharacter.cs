@@ -323,7 +323,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             var currentVerticalSpeed = Vector3.Dot(currentVelocity, _motor.CharacterUp);
             var targetVerticalSpeed = Mathf.Max(currentVerticalSpeed, jumpSpeed);
 
-            currentVelocity += (_motor.CharacterUp + _throwDirection).normalized * (targetVerticalSpeed - currentVerticalSpeed);
+            currentVelocity += (_motor.CharacterUp + _throwDirection) * _throwForce * (targetVerticalSpeed - currentVerticalSpeed); // УБРАЛ НОРМАЛИЗАЦИЮ
         }
         
         
@@ -410,7 +410,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
 
     public void Throw(Vector3 direction, float force)
     {
-        _throwDirection = direction.normalized;
+        _throwDirection = direction.normalized; //УБРАЛ НОРМАЛИЗАЦИЮ ВЕКТОРА
         _requestedThrow = true;
         _throwForce = force;
     }
