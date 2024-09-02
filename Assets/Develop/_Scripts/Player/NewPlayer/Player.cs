@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     [SerializeField] private CameraSpring _cameraSpring;
     [SerializeField] private CameraLean _cameraLean;
 
+    [SerializeField] private LayerMask _hookLayer;
+    [SerializeField] private float _hookDistance = 100;
+
     private PlayerInputActions _inputActions;
     // Start is called before the first frame update
     void Start()
@@ -67,7 +70,20 @@ public class Player : MonoBehaviour
         {
             _playerCharacter.Throw(-_playerCamera.transform.forward,2);
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            var ray = new Ray(_playerCamera.transform.position, _playerCamera.transform.forward);
+            if (Physics.Raycast(ray, out var hit,_hookDistance,_hookLayer))
+            {
+                _playerCharacter.SetSpringTarget(hit.collider.gameObject.transform);
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+                _playerCharacter.SetSpringTarget(null);
+            
+        }
 #endif
         
     }

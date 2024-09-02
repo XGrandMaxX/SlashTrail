@@ -500,6 +500,14 @@ MonoBehaviour:
   airAcceleration: 200
   standCameraTargetHeight: 0.9
   crouchCameraTargetHeight: 0.7
+  ropeConnectedObject: {fileID: 0}
+  ropeLength: 1.1028973
+  maxRopeForce: 266.66666
+  RopeForce: 200
+  ropeSpeed: 25
+  ropeDamping: 2
+  ropeLengthMultiplier: 7
+  ropeDistanceMultiplier: 0.75
 --- !u!136 &4996189636932823141
 CapsuleCollider:
   m_ObjectHideFlags: 8
