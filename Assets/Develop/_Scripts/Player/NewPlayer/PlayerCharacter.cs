@@ -34,6 +34,8 @@
 
     public class PlayerCharacter : MonoBehaviour, ICharacterController
     {
+        public Vector3 velocity { get; private set; }
+        
         [SerializeField] private KinematicCharacterMotor _motor;
         [SerializeField] private Transform cameraTargert;
         [SerializeField] private Transform root;
@@ -365,6 +367,8 @@
                     currentVelocity += velocityToRopeObject;
                 }
             }
+
+            velocity = currentVelocity;
         }
 
         public void BeforeCharacterUpdate(float deltaTime)

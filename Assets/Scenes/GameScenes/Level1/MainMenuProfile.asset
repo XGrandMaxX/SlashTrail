@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: Global Volume Profile
+  m_Name: MainMenuProfile
   m_EditorClassIdentifier: 
   components:
   - {fileID: -9115694404429852832}
@@ -175,7 +175,7 @@ MonoBehaviour:
   active: 1
   mode:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
   gaussianStart:
     m_OverrideState: 1
     m_Value: 50
@@ -190,18 +190,18 @@ MonoBehaviour:
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 14.55
+    m_Value: 16.02
   aperture:
     m_OverrideState: 1
     m_Value: 10.5
   focalLength:
     m_OverrideState: 1
-    m_Value: 268
+    m_Value: 277
   bladeCount:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 5
   bladeCurvature:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   bladeRotation:
     m_OverrideState: 0

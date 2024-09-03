@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +19,11 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask _hookLayer;
     [SerializeField] private float _hookDistance = 100;
 
+    [SerializeField] private Material windMaterial;
+    [SerializeField] private float windMagnitude;
+
+    [SerializeField] private TMP_Text _magnitudeText;
+
     private PlayerInputActions _inputActions;
     // Start is called before the first frame update
     void Start()
@@ -32,6 +39,13 @@ public class Player : MonoBehaviour
         
         _cameraSpring.Initialize();
         _cameraLean.Initialize();
+
+        windMaterial.SetFloat("_Alpha", 0);
+    }
+
+    private void OnDisable()
+    {
+        windMaterial.SetFloat("_Alpha", 0);
     }
 
     // Update is called once per frame
@@ -55,6 +69,12 @@ public class Player : MonoBehaviour
             input.Crouch.IsPressed() ? CrouchInput.Press: CrouchInput.None
             
         };
+
+       
+        windMaterial.SetFloat("_Alpha",Mathf.Lerp(windMaterial.GetFloat("_Alpha"),_playerCharacter.velocity.magnitude > windMagnitude ? 2 : 0,.9f * Time.deltaTime));
+        
+        
+        
         
         _playerCharacter.UpdateInput(characterInput);
         _playerCharacter.UpdateBody(deltaTime);
@@ -78,6 +98,8 @@ public class Player : MonoBehaviour
             obj = null;
         }
 
+        _magnitudeText.text = ((int)_playerCharacter.velocity.magnitude).ToString(CultureInfo.InvariantCulture);
+
 #if UNITY_EDITOR
         if (Keyboard.current.tKey.wasPressedThisFrame)
         {
@@ -87,10 +109,10 @@ public class Player : MonoBehaviour
                 Teleport(hit.point);
             }
         }
-        if (Keyboard.current.qKey.wasPressedThisFrame)
+        /*if (Keyboard.current.qKey.wasPressedThisFrame)
         {
             _playerCharacter.Throw(-_playerCamera.transform.forward,2);
-        }
+        }*/
 
         
 #endif
