@@ -795,6 +795,10 @@ MonoBehaviour:
   _playerCamera: {fileID: 3799903915848214707}
   _cameraSpring: {fileID: 2430040203692895418}
   _cameraLean: {fileID: 1518302745849408898}
+  _hookLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  _hookDistance: 100
 --- !u!114 &8858262839906476096
 MonoBehaviour:
   m_ObjectHideFlags: 0

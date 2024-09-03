@@ -459,6 +459,9 @@
         public void SetSpringTarget(Transform transform)
         {
             ropeConnectedObject = transform;
+            if (transform == null)
+                return;
+            
             var distance = Vector3.Distance(transform.position, this.transform.position);
             ropeLength = distance / ropeLengthMultiplier;
             maxRopeForce = RopeForce / ropeDistanceMultiplier;
