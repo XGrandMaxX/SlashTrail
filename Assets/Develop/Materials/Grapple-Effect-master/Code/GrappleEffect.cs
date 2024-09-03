@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent (typeof (LineRenderer))]
 public class GrappleEffect : MonoBehaviour
@@ -60,7 +60,7 @@ public class GrappleEffect : MonoBehaviour
 
 	public void DoGrapple (Vector3 grapplePoint)
 	{
-		lineRenderer.enabled = true;	
+		lineRenderer.enabled = true;
 		this.grapplePoint = grapplePoint;
 		scaledTimeOffset = spiralTimeOffset = 0f;
 		if (lineRenderer.positionCount != Segments)
