@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.beans.deform": {
+      "version": "https://github.com/keenanwoodall/Deform.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.burst": "1.4.8"
+      },
+      "hash": "b534f45665322adcf2025c87c71e956127014133"
+    },
     "com.unity.burst": {
       "version": "1.8.11",
       "depth": 1,
