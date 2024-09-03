@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
+    private Transform obj;
     void Update()
     {
         var input = _inputActions.Gameplay;
@@ -63,7 +64,9 @@ public class Player : MonoBehaviour
             var ray = new Ray(_playerCamera.transform.position, _playerCamera.transform.forward);
             if (Physics.Raycast(ray, out var hit,_hookDistance,_hookLayer))
             {
-                _playerCharacter.SetSpringTarget(hit.collider.gameObject.transform);
+                obj = new GameObject("point").transform;
+                obj.transform.position = hit.point;
+                _playerCharacter.SetSpringTarget(obj);
                 _grappleEffect.DoGrapple(hit.point);
             }
         }
@@ -71,6 +74,8 @@ public class Player : MonoBehaviour
         {
             _grappleEffect.StopGrapple();
             _playerCharacter.SetSpringTarget(null);
+            Destroy(obj.gameObject);
+            obj = null;
         }
 
 #if UNITY_EDITOR
