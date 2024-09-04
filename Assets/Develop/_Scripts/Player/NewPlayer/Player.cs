@@ -5,6 +5,8 @@ using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class Player : MonoBehaviour
 {
@@ -25,6 +27,9 @@ public class Player : MonoBehaviour
     [SerializeField] private TMP_Text _magnitudeText;
 
     private PlayerInputActions _inputActions;
+
+    [SerializeField] private VolumeProfile _volume;
+    private Vignette _vignette;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +46,16 @@ public class Player : MonoBehaviour
         _cameraLean.Initialize();
 
         windMaterial.SetFloat("_Alpha", 0);
+
+        if (!_volume.TryGet(out Vignette v))
+        {
+            _vignette = _volume.Add<Vignette>();
+        }
+        else
+        {
+            _vignette = v;
+        }
+        
     }
 
     private void OnDisable()
@@ -73,7 +88,9 @@ public class Player : MonoBehaviour
        
         windMaterial.SetFloat("_Alpha",Mathf.Lerp(windMaterial.GetFloat("_Alpha"),_playerCharacter.velocity.magnitude > windMagnitude ? 2 : 0,.9f * Time.deltaTime));
         
-        
+        //_vignette.intensity.value = Mathf.Lerp());
+        _vignette.intensity.Interp(_vignette.intensity.value, _playerCharacter.velocity.magnitude > windMagnitude ? 0.44f : 0, 1 - Mathf.Exp(-.9f * Time.deltaTime));
+       
         
         
         _playerCharacter.UpdateInput(characterInput);
