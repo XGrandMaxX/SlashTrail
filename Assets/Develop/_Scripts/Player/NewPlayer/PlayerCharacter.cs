@@ -329,16 +329,24 @@
             
             if (_requestedThrow)
             {
-                _requestedThrow= false;
+                _requestedThrow = false;
                 _requestedCrouch = false;
                 _requestedCrouchInAir = false;
                 
                 _motor.ForceUnground(0f);
 
+                // Нормализация направления броска (если еще не нормализовано)
+                var normalizedThrowDirection = _throwDirection.normalized;
+
                 var currentVerticalSpeed = Vector3.Dot(currentVelocity, _motor.CharacterUp);
                 var targetVerticalSpeed = Mathf.Max(currentVerticalSpeed, jumpSpeed);
+                
+                print($"Dif {(targetVerticalSpeed - currentVerticalSpeed)}");
+                print($"Vel = {normalizedThrowDirection * _throwForce * (targetVerticalSpeed - currentVerticalSpeed)}");
 
-                currentVelocity += (_motor.CharacterUp + _throwDirection) * _throwForce * (targetVerticalSpeed - currentVerticalSpeed); // УБРАЛ НОРМАЛИЗАЦИЮ
+                currentVelocity.y = 0;
+                // Применяем силу броска
+                currentVelocity += normalizedThrowDirection * _throwForce ;
             }
             
             if (ropeConnectedObject != null)
