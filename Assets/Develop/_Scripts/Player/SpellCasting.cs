@@ -23,10 +23,10 @@ public class SpellCasting : MonoBehaviour
         {
             var pos = Physics.Raycast(cameraTransform.position, cameraTransform.forward, out var hit);
             var direction = hit.point - castPosition.position;
-            currentSpell.ReleaseSpell(castPosition.position,castPosition.transform.forward);
+            currentSpell.ReleaseSpell(cameraTransform.position, cameraTransform.forward);
             currentSpell.onSpellHandlingEnded += info =>
             {
-                var colliders = Physics.OverlapSphere(info.HitPoint, 5);
+                var colliders = Physics.OverlapSphere(info.HitPoint, 8);
 
                 foreach (var c in colliders)
                 {
@@ -34,7 +34,7 @@ public class SpellCasting : MonoBehaviour
                     {
                         Debug.Log("ASSY");
                         var direction = player.transform.position - info.HitPoint;
-                        player.Throw(new Vector3(direction.x,direction.y ,direction.z), 1);
+                        player.Throw(new Vector3(direction.x,direction.y ,direction.z), 50);
                     }
                 }
             };
